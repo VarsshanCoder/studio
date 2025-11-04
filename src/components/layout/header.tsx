@@ -33,9 +33,6 @@ export default function Header() {
           <Link href="/hospitals" className="transition-colors hover:text-foreground/80 text-foreground/60">
             {t('header.hospitals')}
           </Link>
-          <Link href="/dashboard" className="transition-colors hover:text-foreground/80 text-foreground/60">
-            {t('header.dashboard')}
-          </Link>
         </nav>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <DropdownMenu>
