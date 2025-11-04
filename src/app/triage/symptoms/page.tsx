@@ -27,6 +27,7 @@ import { symptomBasedTriage, type SymptomBasedTriageOutput } from "@/ai/flows/sy
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { VoicePlayer } from "@/components/common/voice-player";
 
 export default function SymptomTriagePage() {
   const { t, language, setLanguage } = useTranslation();
@@ -101,6 +102,17 @@ export default function SymptomTriagePage() {
         return 'bg-primary';
     }
   }
+  
+  const getResultAsText = () => {
+    if (!result) return '';
+    return `
+      ${t('symptomTriagePage.analysisResultTitle')}.
+      ${t('symptomTriagePage.severityLabel')}: ${result.severity}.
+      ${t('symptomTriagePage.confidenceLabel')}: ${Math.round(result.confidence * 100)}%.
+      ${t('symptomTriagePage.explanationLabel')}: ${result.explanation}.
+      ${t('symptomTriagePage.recommendationsLabel')}: ${result.recommendations.join(', ')}.
+    `;
+  };
 
   return (
     <div className="w-full max-w-2xl space-y-6">
@@ -174,13 +186,16 @@ export default function SymptomTriagePage() {
 
       {result && (
         <Card className="animate-blur-in">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl font-headline">
-              <BrainCircuit /> {t('symptomTriagePage.analysisResultTitle')}
-            </CardTitle>
-            <CardDescription>
-                {t('symptomTriagePage.analysisResultDesc')}
-            </CardDescription>
+          <CardHeader className="flex-row items-center justify-between">
+            <div className="space-y-1.5">
+              <CardTitle className="flex items-center gap-2 text-2xl font-headline">
+                <BrainCircuit /> {t('symptomTriagePage.analysisResultTitle')}
+              </CardTitle>
+              <CardDescription>
+                  {t('symptomTriagePage.analysisResultDesc')}
+              </CardDescription>
+            </div>
+            <VoicePlayer text={getResultAsText} />
           </CardHeader>
           <CardContent className="space-y-4">
               <div className="space-y-2">

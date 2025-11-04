@@ -5,9 +5,20 @@ import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Bot } from 'lucide-react';
 import { useTranslation } from '@/context/language-context';
+import { VoicePlayer } from '@/components/common/voice-player';
 
 export default function RecommendationsPage() {
   const { t } = useTranslation();
+
+  const getPageContent = () => {
+    return `
+      ${t('recommendationsPage.cardTitle')}.
+      ${t('recommendationsPage.content1')}.
+      ${t('recommendationsPage.content2')}.
+      ${t('recommendationsPage.content3')}.
+    `;
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -21,10 +32,11 @@ export default function RecommendationsPage() {
           </div>
           <div className="max-w-4xl mx-auto">
             <Card>
-              <CardHeader>
+              <CardHeader className="flex-row items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
                   <Bot /> {t('recommendationsPage.cardTitle')}
                 </CardTitle>
+                <VoicePlayer text={getPageContent} />
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground">
                 <p>

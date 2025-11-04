@@ -5,9 +5,24 @@ import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { LayoutDashboard } from 'lucide-react';
 import { useTranslation } from '@/context/language-context';
+import { VoicePlayer } from '@/components/common/voice-player';
 
 export default function DashboardInfoPage() {
   const { t } = useTranslation();
+
+  const getPageContent = () => {
+    return `
+      ${t('dashboardInfoPage.cardTitle')}.
+      ${t('dashboardInfoPage.mainContent')}.
+      ${t('dashboardInfoPage.forPatientsTitle')}.
+      ${t('dashboardInfoPage.forPatientsContent')}.
+      ${t('dashboardInfoPage.forDoctorsTitle')}.
+      ${t('dashboardInfoPage.forDoctorsContent')}.
+      ${t('dashboardInfoPage.forAdminsTitle')}.
+      ${t('dashboardInfoPage.forAdminsContent')}.
+    `;
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
@@ -21,10 +36,11 @@ export default function DashboardInfoPage() {
           </div>
           <div className="max-w-4xl mx-auto">
             <Card>
-              <CardHeader>
+              <CardHeader className="flex flex-row items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
                   <LayoutDashboard /> {t('dashboardInfoPage.cardTitle')}
                 </CardTitle>
+                 <VoicePlayer text={getPageContent} />
               </CardHeader>
               <CardContent className="space-y-4 text-muted-foreground">
                 <p>

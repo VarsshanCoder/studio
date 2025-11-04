@@ -20,6 +20,7 @@ import { useToast } from "@/hooks/use-toast";
 import { xrayDiagnosis, type XrayDiagnosisOutput } from "@/ai/flows/xray-diagnosis";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { VoicePlayer } from "@/components/common/voice-player";
 
 export default function XrayDiagnosisPage() {
   const { t, language } = useTranslation();
@@ -93,6 +94,18 @@ export default function XrayDiagnosisPage() {
     return 'bg-green-500';
   }
 
+  const getResultAsText = () => {
+    if (!result) return '';
+    const isTamil = language === 'ta';
+    return `
+      ${t('xrayDiagnosisPage.analysisResultTitle')}.
+      ${t('xrayDiagnosisPage.impressionLabel')}: ${isTamil ? result.impressionTa : result.impression}.
+      ${t('xrayDiagnosisPage.findingsLabel')}: ${(isTamil ? result.findingsTa : result.findings).join(', ')}.
+      ${t('xrayDiagnosisPage.recommendationsLabel')}: ${(isTamil ? result.recommendationsTa : result.recommendations).join(', ')}.
+      ${t('xrayDiagnosisPage.explanationLabel')}: ${isTamil ? result.explanationTa : result.explanationEn}.
+    `;
+  };
+
 
   return (
     <div className="w-full max-w-4xl space-y-6">
@@ -161,13 +174,16 @@ export default function XrayDiagnosisPage() {
       
        {result && (
         <Card className="animate-blur-in">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-2xl font-headline">
-              <BrainCircuit /> {t('xrayDiagnosisPage.analysisResultTitle')}
-            </CardTitle>
-            <CardDescription>
-                {t('xrayDiagnosisPage.analysisResultDesc')}
-            </CardDescription>
+          <CardHeader className="flex-row items-center justify-between">
+            <div>
+                <CardTitle className="flex items-center gap-2 text-2xl font-headline">
+                <BrainCircuit /> {t('xrayDiagnosisPage.analysisResultTitle')}
+                </CardTitle>
+                <CardDescription>
+                    {t('xrayDiagnosisPage.analysisResultDesc')}
+                </CardDescription>
+            </div>
+            <VoicePlayer text={getResultAsText} />
           </CardHeader>
           <CardContent className="space-y-6">
                <div className="space-y-2">
