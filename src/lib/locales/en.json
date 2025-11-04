@@ -65,7 +65,18 @@
         "agePlaceholder": "Your age",
         "consentLabel": "I consent to share my health details for AI analysis.",
         "consentDescription": "I understand this is not a substitute for a professional medical diagnosis.",
-        "getAnalysisButton": "Get Analysis"
+        "getAnalysisButton": "Get Analysis",
+        "analyzingButton": "Analyzing...",
+        "validationErrorTitle": "Missing Information",
+        "validationErrorDesc": "Please fill out all fields and provide consent to proceed.",
+        "analysisErrorTitle": "Analysis Failed",
+        "analysisErrorDesc": "There was an error processing your request. Please try again.",
+        "analysisResultTitle": "AI Analysis Result",
+        "analysisResultDesc": "Based on the symptoms you provided, here is our assessment.",
+        "severityLabel": "Assessed Severity",
+        "explanationLabel": "Explanation",
+        "recommendationsLabel": "Recommendations",
+        "confidenceLabel": "Confidence Score"
     },
     "imageDiagnosisPage": {
         "title": "Image Diagnosis",
