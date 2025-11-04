@@ -22,7 +22,7 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 
 export default function XrayDiagnosisPage() {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
   const { toast } = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -179,23 +179,23 @@ export default function XrayDiagnosisPage() {
               </div>
               <div className="space-y-2">
                   <h3 className="font-semibold">{t('xrayDiagnosisPage.impressionLabel')}</h3>
-                  <p className="text-muted-foreground">{result.impression}</p>
+                  <p className="text-muted-foreground">{language === 'ta' ? result.impressionTa : result.impression}</p>
               </div>
               <div className="space-y-2">
                   <h3 className="font-semibold">{t('xrayDiagnosisPage.findingsLabel')}</h3>
                   <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                      {result.findings.map((finding, index) => <li key={index}>{finding}</li>)}
+                      {(language === 'ta' ? result.findingsTa : result.findings).map((finding, index) => <li key={index}>{finding}</li>)}
                   </ul>
               </div>
               <div className="space-y-2">
                   <h3 className="font-semibold">{t('xrayDiagnosisPage.recommendationsLabel')}</h3>
                   <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                      {result.recommendations.map((rec, index) => <li key={index}>{rec}</li>)}
+                      {(language === 'ta' ? result.recommendationsTa : result.recommendations).map((rec, index) => <li key={index}>{rec}</li>)}
                   </ul>
               </div>
                <div className="space-y-2">
                   <h3 className="font-semibold">{t('xrayDiagnosisPage.explanationLabel')}</h3>
-                  <p className="text-muted-foreground">{t('language') === 'ta' ? result.explanationTa : result.explanationEn}</p>
+                  <p className="text-muted-foreground">{language === 'ta' ? result.explanationTa : result.explanationEn}</p>
               </div>
           </CardContent>
         </Card>

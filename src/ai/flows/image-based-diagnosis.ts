@@ -30,10 +30,13 @@ const ImageBasedDiagnosisOutputSchema = z.object({
   diagnosis: z.array(z.string()).describe('An array of probable diagnoses.'),
   confidence: z.number().describe('The confidence score of the diagnosis (0-1).'),
   severity: z.enum(['mild', 'moderate', 'severe']).describe('The severity of the condition.'),
-  recommendations: z.array(z.string()).describe('Recommended next steps in both Tamil and English.'),
+  recommendations: z.array(z.string()).describe('Recommended next steps.'),
   followUp: z.array(z.string()).describe('A structured follow-up plan.'),
   explanationEn: z.string().describe('Explanation of the diagnosis in English'),
   explanationTa: z.string().describe('Explanation of the diagnosis in Tamil'),
+  recommendationsTa: z.array(z.string()).describe('Recommended next steps in Tamil.'),
+  followUpTa: z.array(z.string()).describe('A structured follow-up plan in Tamil.'),
+  diagnosisTa: z.array(z.string()).describe('An array of probable diagnoses in Tamil.'),
 });
 
 export type ImageBasedDiagnosisOutput = z.infer<typeof ImageBasedDiagnosisOutputSchema>;
@@ -50,7 +53,7 @@ const imageBasedDiagnosisPrompt = ai.definePrompt({
   output: {schema: ImageBasedDiagnosisOutputSchema},
   prompt: `You are a medical AI assistant that specializes in image-based diagnosis.
 
-  Analyze the image and patient information to provide a probable diagnosis, confidence score, severity assessment, and actionable recommendations in both Tamil and English. Provide the response as a JSON object.
+  Analyze the image and patient information to provide a probable diagnosis, confidence score, severity assessment, and actionable recommendations. Provide explanations, recommendations and follow-up plans in both English and Tamil.
 
   Patient Information:
   - Age: {{{age}}}
@@ -62,11 +65,14 @@ const imageBasedDiagnosisPrompt = ai.definePrompt({
 
   Respond in JSON format, according to this schema:
   {
-    "diagnosis": ["list of probable diagnoses"],
+    "diagnosis": ["list of probable diagnoses in English"],
+    "diagnosisTa": ["list of probable diagnoses in Tamil"],
     "confidence": float (0-1),
     "severity": "mild|moderate|severe",
-    "recommendations": ["list of recommended next steps in both Tamil and English"],
-    "followUp": ["structured follow-up plan"],
+    "recommendations": ["list of recommended next steps in English"],
+    "recommendationsTa": ["list of recommended next steps in Tamil"],
+    "followUp": ["structured follow-up plan in English"],
+    "followUpTa": ["structured follow-up plan in Tamil"],
     "explanationEn": "Explanation of the diagnosis in English",
     "explanationTa": "Explanation of the diagnosis in Tamil"
   }
