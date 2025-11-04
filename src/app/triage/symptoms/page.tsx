@@ -1,6 +1,6 @@
 // @ts-nocheck
 'use client';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -26,6 +26,7 @@ import { useTranslation } from "@/context/language-context";
 import { symptomBasedTriage, type SymptomBasedTriageOutput } from "@/ai/flows/symptom-based-triage";
 import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 
 export default function SymptomTriagePage() {
   const { t, language, setLanguage } = useTranslation();
@@ -36,6 +37,14 @@ export default function SymptomTriagePage() {
   const [consent, setConsent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<SymptomBasedTriageOutput | null>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    if (result) {
+      const timer = setTimeout(() => setProgress(result.confidence * 100), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [result]);
 
   const handleAnalysis = async () => {
     if (!symptoms || !age || !consent) {
@@ -48,6 +57,7 @@ export default function SymptomTriagePage() {
     }
     setLoading(true);
     setResult(null);
+    setProgress(0);
     try {
         const response = await symptomBasedTriage({
             symptoms,
@@ -76,6 +86,19 @@ export default function SymptomTriagePage() {
         return 'destructive';
       default:
         return 'outline';
+    }
+  }
+
+  const getConfidenceBarColor = (severity: 'mild' | 'moderate' | 'severe') => {
+    switch (severity) {
+      case 'mild':
+        return 'bg-blue-500';
+      case 'moderate':
+        return 'bg-yellow-500';
+      case 'severe':
+        return 'bg-red-500';
+      default:
+        return 'bg-primary';
     }
   }
 
@@ -169,6 +192,13 @@ export default function SymptomTriagePage() {
                       {result.severity.charAt(0).toUpperCase() + result.severity.slice(1)}
                   </Badge>
               </div>
+               <div className="space-y-2">
+                  <h3 className="font-semibold">{t('symptomTriagePage.confidenceLabel')}</h3>
+                  <div className="flex items-center gap-2">
+                    <Progress value={progress} className="w-full [&>div]:transition-all [&>div]:duration-500" indicatorClassName={getConfidenceBarColor(result.severity)} />
+                    <span className="font-mono text-sm font-medium">{Math.round(result.confidence * 100)}%</span>
+                  </div>
+              </div>
               <div className="space-y-2">
                   <h3 className="font-semibold">{t('symptomTriagePage.explanationLabel')}</h3>
                   <p className="text-muted-foreground">{result.explanation}</p>
@@ -178,9 +208,6 @@ export default function SymptomTriagePage() {
                   <ul className="list-disc list-inside text-muted-foreground space-y-1">
                       {result.recommendations.map((rec, index) => <li key={index}>{rec}</li>)}
                   </ul>
-              </div>
-               <div className="text-xs text-muted-foreground pt-2">
-                {t('symptomTriagePage.confidenceLabel')}: {Math.round(result.confidence * 100)}%
               </div>
           </CardContent>
         </Card>
