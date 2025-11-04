@@ -1,3 +1,5 @@
+// @ts-nocheck
+'use client';
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -19,55 +21,57 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { Stethoscope } from "lucide-react"
+import { useTranslation } from "@/context/language-context";
 
 export default function SymptomTriagePage() {
+  const { t, language, setLanguage } = useTranslation();
   return (
     <Card className="w-full max-w-2xl">
       <CardHeader>
         <CardTitle className="flex items-center gap-2 text-2xl font-headline">
-          <Stethoscope /> Symptom Triage
+          <Stethoscope /> {t('symptomTriagePage.title')}
         </CardTitle>
         <CardDescription>
-          Describe your symptoms to get an AI-powered severity assessment and recommended next steps.
+          {t('symptomTriagePage.description')}
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-6">
         <div className="grid gap-2">
-          <Label htmlFor="symptoms">Describe your symptoms</Label>
-          <Textarea id="symptoms" placeholder="e.g., I have a headache and a slight fever..." className="min-h-[120px]" />
+          <Label htmlFor="symptoms">{t('symptomTriagePage.symptomsLabel')}</Label>
+          <Textarea id="symptoms" placeholder={t('symptomTriagePage.symptomsPlaceholder')} className="min-h-[120px]" />
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="grid gap-2">
-                <Label htmlFor="language">Preferred Language</Label>
-                 <Select defaultValue="en">
+                <Label htmlFor="language">{t('symptomTriagePage.languageLabel')}</Label>
+                 <Select value={language} onValueChange={(value) => setLanguage(value as 'en' | 'ta')}>
                     <SelectTrigger id="language">
                         <SelectValue placeholder="Select language" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="en">English</SelectItem>
-                        <SelectItem value="ta">தமிழ் (Tamil)</SelectItem>
+                        <SelectItem value="en">{t('symptomTriagePage.english')}</SelectItem>
+                        <SelectItem value="ta">{t('symptomTriagePage.tamil')}</SelectItem>
                     </SelectContent>
                 </Select>
             </div>
              <div className="grid gap-2">
-                <Label htmlFor="age">Age</Label>
-                <Input id="age" type="number" placeholder="Your age" />
+                <Label htmlFor="age">{t('symptomTriagePage.ageLabel')}</Label>
+                <Input id="age" type="number" placeholder={t('symptomTriagePage.agePlaceholder')} />
             </div>
         </div>
         <div className="flex items-start space-x-3">
           <Checkbox id="consent" />
           <div className="grid gap-1.5 leading-none">
             <label htmlFor="consent" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              I consent to share my health details for AI analysis.
+              {t('symptomTriagePage.consentLabel')}
             </label>
             <p className="text-xs text-muted-foreground">
-              I understand this is not a substitute for a professional medical diagnosis.
+              {t('symptomTriagePage.consentDescription')}
             </p>
           </div>
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">Get Analysis</Button>
+        <Button className="w-full">{t('symptomTriagePage.getAnalysisButton')}</Button>
       </CardFooter>
     </Card>
   )

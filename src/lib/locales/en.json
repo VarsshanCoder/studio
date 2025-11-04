@@ -1,0 +1,132 @@
+{
+    "header": {
+        "symptomTriage": "Symptom Triage",
+        "imageDiagnosis": "Image Diagnosis",
+        "hospitals": "Hospitals",
+        "dashboard": "Dashboard",
+        "login": "Login",
+        "toggleLanguage": "Toggle language"
+    },
+    "hero": {
+        "title": "Intelligent Healthcare, Instantly",
+        "subtitle": "AarogyamAI provides AI-powered symptom analysis and image-based diagnosis in English and Tamil. Get insights and recommended next steps in minutes.",
+        "symptomTriage": "Symptom Triage",
+        "symptomTriageDesc": "Describe your symptoms and get an instant severity assessment.",
+        "startAnalysis": "Start Analysis",
+        "imageDiagnosis": "Image Diagnosis",
+        "imageDiagnosisDesc": "Upload an image for AI-powered analysis of your condition.",
+        "uploadImage": "Upload Image"
+    },
+    "features": {
+        "title": "A Complete Health Ecosystem",
+        "subtitle": "From initial diagnosis to follow-up care, AarogyamAI provides the tools you need.",
+        "actionableRecommendations": "Actionable Recommendations",
+        "actionableRecommendationsDesc": "Get personalized advice, from home care to booking a consultation.",
+        "unifiedDashboards": "Unified Dashboards",
+        "unifiedDashboardsDesc": "Separate, role-based views for patients, doctors, and admins.",
+        "nearbyHospitals": "Nearby Hospitals",
+        "nearbyHospitalsDesc": "Find trusted hospitals and clinics in Tamil Nadu near you.",
+        "privacyCompliance": "Privacy & Compliance",
+        "privacyComplianceDesc": "Your data is encrypted, secure, and under your control."
+    },
+    "howItWorks": {
+        "title": "Simple Steps to Better Health",
+        "subtitle": "Getting started with AarogyamAI is easy, fast, and secure.",
+        "step1Title": "1. Describe or Upload",
+        "step1Desc": "Tell us your symptoms in your own words, or upload a clear photo of the condition.",
+        "step2Title": "2. AI Analysis",
+        "step2Desc": "Our advanced AI models analyze the information to identify potential conditions and assess severity.",
+        "step3Title": "3. Get Recommendations",
+        "step3Desc": "Receive clear, actionable next steps, from home remedies to booking a doctor's appointment."
+    },
+    "footer": {
+        "builtBy": "Built by your AI assistant. © {year} AarogyamAI. All rights reserved."
+    },
+    "loginPage": {
+        "title": "Login",
+        "description": "Enter your email below to login to your account",
+        "emailLabel": "Email",
+        "passwordLabel": "Password",
+        "forgotPassword": "Forgot your password?",
+        "loginButton": "Login",
+        "loginWithGoogle": "Login with Google",
+        "noAccount": "Don't have an account?",
+        "signUp": "Sign up"
+    },
+    "symptomTriagePage": {
+        "title": "Symptom Triage",
+        "description": "Describe your symptoms to get an AI-powered severity assessment and recommended next steps.",
+        "symptomsLabel": "Describe your symptoms",
+        "symptomsPlaceholder": "e.g., I have a headache and a slight fever...",
+        "languageLabel": "Preferred Language",
+        "english": "English",
+        "tamil": "தமிழ் (Tamil)",
+        "ageLabel": "Age",
+        "agePlaceholder": "Your age",
+        "consentLabel": "I consent to share my health details for AI analysis.",
+        "consentDescription": "I understand this is not a substitute for a professional medical diagnosis.",
+        "getAnalysisButton": "Get Analysis"
+    },
+    "imageDiagnosisPage": {
+        "title": "Image Diagnosis",
+        "description": "Upload a photo of a skin condition, wound, rash, dental, or eye problem for analysis.",
+        "uploadLabel": "Upload Image",
+        "uploadHint": "Click to upload or drag and drop",
+        "uploadConstraints": "PNG, JPG, or WEBP (MAX. 5MB)",
+        "ageLabel": "Age",
+        "agePlaceholder": "e.g. 35",
+        "sexLabel": "Sex",
+        "sexPlaceholder": "e.g. Male",
+        "symptomsLabel": "Additional Symptoms (optional)",
+        "symptomsPlaceholder": "Describe any other symptoms you're experiencing...",
+        "consentLabel": "I consent to upload my images and share health details for AI analysis.",
+        "consentDescription": "I understand this is not a substitute for a professional medical diagnosis.",
+        "analyzeButton": "Analyze Image"
+    },
+    "hospitalsPage": {
+        "title": "Find Hospitals Near You",
+        "subtitle": "Search for hospitals and clinics across Tamil Nadu.",
+        "searchPlaceholder": "Search by hospital name or location...",
+        "filtersButton": "Filters",
+        "searchButton": "Search",
+        "kmAway": "km away",
+        "getDirections": "Get Directions"
+    },
+    "dashboard": {
+        "title": "Dashboard",
+        "welcome": "Welcome back!",
+        "welcomeDesc": "Here's a quick overview of your health dashboard. Ready to get started?",
+        "symptomTriage": "Symptom Triage",
+        "symptomTriageDesc": "Describe your symptoms to get an AI-powered triage assessment.",
+        "startTriage": "Start Triage",
+        "imageDiagnosis": "Image Diagnosis",
+        "imageDiagnosisDesc": "Upload an image of your condition for a quick analysis.",
+        "uploadImage": "Upload Image",
+        "appointments": "Appointments",
+        "appointmentsDesc": "You have 2 upcoming appointments.",
+        "viewAll": "View All",
+        "findHospitals": "Find Hospitals",
+        "findHospitalsDesc": "Find nearby hospitals and clinics in Tamil Nadu.",
+        "searchNow": "Search Now"
+    },
+    "dashboardLayout": {
+        "dashboard": "Dashboard",
+        "symptomTriage": "Symptom Triage",
+        "imageDiagnosis": "Image Diagnosis",
+        "findHospitals": "Find Hospitals",
+        "logout": "Log Out"
+    },
+    "dashboardHeader": {
+        "toggleNotifications": "Toggle notifications",
+        "toggleUserMenu": "Toggle user menu",
+        "myAccount": "My Account",
+        "profile": "Profile",
+        "settings": "Settings",
+        "support": "Support",
+        "logout": "Log out"
+    },
+    "languages": {
+        "english": "English",
+        "tamil": "தமிழ் (Tamil)"
+    }
+}

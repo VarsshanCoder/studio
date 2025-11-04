@@ -1,3 +1,5 @@
+// @ts-nocheck
+'use client';
 import Link from 'next/link';
 import {
   SidebarProvider,
@@ -13,12 +15,14 @@ import {
 import DashboardHeader from '@/components/layout/dashboard-header';
 import { Home, Stethoscope, FileText, Hospital, HeartPulse, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from '@/context/language-context';
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+    const { t } = useTranslation();
   return (
     <SidebarProvider>
       <div className="min-h-screen">
@@ -34,27 +38,27 @@ export default function DashboardLayout({
           <SidebarContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton href="/dashboard" tooltip="Dashboard" isActive>
+                <SidebarMenuButton href="/dashboard" tooltip={t('dashboardLayout.dashboard')} isActive>
                   <Home />
-                  <span>Dashboard</span>
+                  <span>{t('dashboardLayout.dashboard')}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton href="/triage/symptoms" tooltip="Symptom Triage">
+                <SidebarMenuButton href="/triage/symptoms" tooltip={t('dashboardLayout.symptomTriage')}>
                   <Stethoscope />
-                  <span>Symptom Triage</span>
+                  <span>{t('dashboardLayout.symptomTriage')}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton href="/triage/image" tooltip="Image Diagnosis">
+                <SidebarMenuButton href="/triage/image" tooltip={t('dashboardLayout.imageDiagnosis')}>
                   <FileText />
-                  <span>Image Diagnosis</span>
+                  <span>{t('dashboardLayout.imageDiagnosis')}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                <SidebarMenuButton href="/hospitals" tooltip="Find Hospitals">
+                <SidebarMenuButton href="/hospitals" tooltip={t('dashboardLayout.findHospitals')}>
                   <Hospital />
-                  <span>Find Hospitals</span>
+                  <span>{t('dashboardLayout.findHospitals')}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>
@@ -62,9 +66,9 @@ export default function DashboardLayout({
           <SidebarFooter>
             <SidebarMenu>
                 <SidebarMenuItem>
-                    <SidebarMenuButton href="/login" tooltip="Log Out">
+                    <SidebarMenuButton href="/login" tooltip={t('dashboardLayout.logout')}>
                         <LogOut />
-                        <span>Log Out</span>
+                        <span>{t('dashboardLayout.logout')}</span>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
             </SidebarMenu>

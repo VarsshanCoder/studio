@@ -12,8 +12,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Bell, LifeBuoy, LogOut, Settings, User } from "lucide-react";
+import { useTranslation } from "@/context/language-context";
 
 export default function DashboardHeader() {
+    const { t } = useTranslation();
     return (
         <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 backdrop-blur-sm md:px-6">
             <div className="md:hidden">
@@ -25,7 +27,7 @@ export default function DashboardHeader() {
             <div className="flex items-center gap-4">
                 <Button variant="ghost" size="icon" className="rounded-full">
                     <Bell className="h-5 w-5" />
-                    <span className="sr-only">Toggle notifications</span>
+                    <span className="sr-only">{t('dashboardHeader.toggleNotifications')}</span>
                 </Button>
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -34,28 +36,28 @@ export default function DashboardHeader() {
                                 <AvatarImage data-ai-hint="person portrait" src="https://picsum.photos/seed/user/40/40" alt="User" />
                                 <AvatarFallback>U</AvatarFallback>
                             </Avatar>
-                            <span className="sr-only">Toggle user menu</span>
+                            <span className="sr-only">{t('dashboardHeader.toggleUserMenu')}</span>
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                        <DropdownMenuLabel>{t('dashboardHeader.myAccount')}</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
                             <User className="mr-2 h-4 w-4" />
-                            <span>Profile</span>
+                            <span>{t('dashboardHeader.profile')}</span>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
                             <Settings className="mr-2 h-4 w-4" />
-                            <span>Settings</span>
+                            <span>{t('dashboardHeader.settings')}</span>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
                             <LifeBuoy className="mr-2 h-4 w-4" />
-                            <span>Support</span>
+                            <span>{t('dashboardHeader.support')}</span>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>
                             <LogOut className="mr-2 h-4 w-4" />
-                            <span>Log out</span>
+                            <span>{t('dashboardHeader.logout')}</span>
                         </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

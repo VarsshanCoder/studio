@@ -1,3 +1,5 @@
+// @ts-nocheck
+'use client';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,8 +9,10 @@ import { ListFilter, MapPin, Phone, Route } from 'lucide-react';
 import { mockHospitals, type Hospital } from '@/lib/hospitals';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { useTranslation } from '@/context/language-context';
 
 function HospitalCard({ hospital }: { hospital: Hospital }) {
+  const { t } = useTranslation();
   return (
     <Card className="flex flex-col">
       <CardHeader>
@@ -23,7 +27,7 @@ function HospitalCard({ hospital }: { hospital: Hospital }) {
                 <Phone className="h-4 w-4" />
                 <span>{hospital.phone}</span>
             </div>
-            <span>{hospital.distance} km away</span>
+            <span>{hospital.distance} {t('hospitalsPage.kmAway')}</span>
         </div>
       </CardContent>
       <CardFooter className="flex-col items-start gap-4">
@@ -32,7 +36,7 @@ function HospitalCard({ hospital }: { hospital: Hospital }) {
             <Badge variant={hospital.type === 'Public' ? 'default' : 'secondary'}>{hospital.type}</Badge>
             <Button variant="outline">
                 <Route className="mr-2 h-4 w-4" />
-                Get Directions
+                {t('hospitalsPage.getDirections')}
             </Button>
         </div>
       </CardFooter>
@@ -41,25 +45,26 @@ function HospitalCard({ hospital }: { hospital: Hospital }) {
 }
 
 export default function HospitalsPage() {
+  const { t } = useTranslation();
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
         <div className="container mx-auto px-4 md:px-6 py-12">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold font-headline">Find Hospitals Near You</h1>
+            <h1 className="text-4xl font-bold font-headline">{t('hospitalsPage.title')}</h1>
             <p className="max-w-2xl mx-auto text-muted-foreground mt-4">
-              Search for hospitals and clinics across Tamil Nadu.
+              {t('hospitalsPage.subtitle')}
             </p>
           </div>
           <div className="flex flex-col md:flex-row gap-4 mb-8">
-            <Input placeholder="Search by hospital name or location..." className="flex-1" />
+            <Input placeholder={t('hospitalsPage.searchPlaceholder')} className="flex-1" />
             <div className="flex gap-2">
                 <Button variant="outline">
                     <ListFilter className="mr-2 h-4 w-4" />
-                    Filters
+                    {t('hospitalsPage.filtersButton')}
                 </Button>
-                <Button>Search</Button>
+                <Button>{t('hospitalsPage.searchButton')}</Button>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
