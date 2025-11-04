@@ -13,7 +13,7 @@ import {
   SidebarFooter,
 } from '@/components/ui/sidebar';
 import DashboardHeader from '@/components/layout/dashboard-header';
-import { Home, Stethoscope, FileText, Hospital, HeartPulse, LogOut } from 'lucide-react';
+import { Home, Stethoscope, FileText, Hospital, HeartPulse, LogOut, FileHeart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/context/language-context';
 
@@ -53,6 +53,12 @@ export default function DashboardLayout({
                 <SidebarMenuButton href="/triage/image" tooltip={t('dashboardLayout.imageDiagnosis')}>
                   <FileText />
                   <span>{t('dashboardLayout.imageDiagnosis')}</span>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton href="/triage/x-ray" tooltip={t('dashboardLayout.xrayDiagnosis')}>
+                    <FileHeart />
+                    <span>{t('dashboardLayout.xrayDiagnosis')}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>

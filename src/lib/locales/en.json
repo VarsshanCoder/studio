@@ -2,6 +2,7 @@
     "header": {
         "symptomTriage": "Symptom Triage",
         "imageDiagnosis": "Image Diagnosis",
+        "xrayDiagnosis": "X-Ray Diagnosis",
         "hospitals": "Hospitals",
         "dashboard": "Dashboard",
         "login": "Login",
@@ -15,7 +16,10 @@
         "startAnalysis": "Start Analysis",
         "imageDiagnosis": "Image Diagnosis",
         "imageDiagnosisDesc": "Upload an image for AI-powered analysis of your condition.",
-        "uploadImage": "Upload Image"
+        "uploadImage": "Upload Image",
+        "xrayDiagnosis": "X-Ray Diagnosis",
+        "xrayDiagnosisDesc": "Upload an X-ray for AI-powered analysis and insights.",
+        "uploadXRay": "Upload X-Ray"
     },
     "features": {
         "title": "A Complete Health Ecosystem",
@@ -94,6 +98,34 @@
         "consentDescription": "I understand this is not a substitute for a professional medical diagnosis.",
         "analyzeButton": "Analyze Image"
     },
+    "xrayDiagnosisPage": {
+        "title": "X-Ray Diagnosis",
+        "description": "Upload an X-ray image for AI-powered analysis. This tool is for informational purposes and is not a substitute for professional medical advice.",
+        "uploadLabel": "Upload X-Ray Image",
+        "uploadHint": "Click to upload or drag and drop",
+        "uploadConstraints": "PNG, JPG, or WEBP (MAX. 10MB)",
+        "ageLabel": "Age",
+        "agePlaceholder": "e.g. 45",
+        "sexLabel": "Sex",
+        "sexPlaceholder": "e.g. Female",
+        "symptomsLabel": "Clinical History / Symptoms (optional)",
+        "symptomsPlaceholder": "Provide relevant clinical history, such as 'Persistent cough for 2 weeks'...",
+        "consentLabel": "I consent to upload this medical image for AI analysis.",
+        "consentDescription": "I confirm that I have the right to use this image and understand this is for informational purposes only.",
+        "analyzeButton": "Analyze X-Ray",
+        "analyzingButton": "Analyzing...",
+        "validationErrorTitle": "Missing Information",
+        "validationErrorDesc": "Please upload an image, fill out all required fields, and provide consent.",
+        "analysisErrorTitle": "Analysis Failed",
+        "analysisErrorDesc": "Could not analyze the X-ray. Please try again or use a different image.",
+        "analysisResultTitle": "AI X-Ray Analysis",
+        "analysisResultDesc": "This analysis is AI-generated and should be reviewed by a qualified radiologist.",
+        "confidenceLabel": "Confidence Score",
+        "impressionLabel": "Impression",
+        "findingsLabel": "Key Findings",
+        "recommendationsLabel": "Recommendations",
+        "explanationLabel": "Detailed Explanation"
+    },
     "hospitalsPage": {
         "title": "Find Hospitals Near You",
         "subtitle": "Search for hospitals and clinics across Tamil Nadu.",
@@ -124,6 +156,7 @@
         "dashboard": "Dashboard",
         "symptomTriage": "Symptom Triage",
         "imageDiagnosis": "Image Diagnosis",
+        "xrayDiagnosis": "X-Ray Diagnosis",
         "findHospitals": "Find Hospitals",
         "logout": "Log Out"
     },

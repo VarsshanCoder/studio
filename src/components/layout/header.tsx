@@ -27,6 +27,9 @@ export default function Header() {
           <Link href="/triage/image" className="transition-colors hover:text-foreground/80 text-foreground/60">
             {t('header.imageDiagnosis')}
           </Link>
+           <Link href="/triage/x-ray" className="transition-colors hover:text-foreground/80 text-foreground/60">
+            {t('header.xrayDiagnosis')}
+          </Link>
           <Link href="/hospitals" className="transition-colors hover:text-foreground/80 text-foreground/60">
             {t('header.hospitals')}
           </Link>

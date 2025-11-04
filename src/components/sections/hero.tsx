@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { SpotlightCard } from '@/components/ui/spotlight-card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, ScanLine, Stethoscope } from 'lucide-react';
+import { ArrowRight, ScanLine, Stethoscope, FileHeart } from 'lucide-react';
 import { useTranslation } from '@/context/language-context';
 
 export default function Hero() {
@@ -18,7 +18,7 @@ export default function Hero() {
         <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-8 text-balance">
           {t('hero.subtitle')}
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <Link href="/triage/symptoms">
             <SpotlightCard className="p-6 h-full">
               <div className="flex flex-col items-center text-center">
@@ -47,6 +47,22 @@ export default function Hero() {
                 </p>
                 <Button variant="ghost" className="text-primary hover:text-primary">
                   {t('hero.uploadImage')} <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
+            </SpotlightCard>
+          </Link>
+          <Link href="/triage/x-ray">
+            <SpotlightCard className="p-6 h-full">
+              <div className="flex flex-col items-center text-center">
+                <div className="p-3 bg-primary/10 rounded-full mb-4">
+                  <FileHeart className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 font-headline">{t('hero.xrayDiagnosis')}</h3>
+                <p className="text-muted-foreground mb-4">
+                  {t('hero.xrayDiagnosisDesc')}
+                </p>
+                <Button variant="ghost" className="text-primary hover:text-primary">
+                  {t('hero.uploadXRay')} <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
             </SpotlightCard>
