@@ -1,8 +1,10 @@
+
 // @ts-nocheck
 'use client';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ShieldCheck, Hospital, LayoutDashboard, Bot } from 'lucide-react';
 import { useTranslation } from '@/context/language-context';
+import { SpotlightCard } from '../ui/spotlight-card';
+import Link from 'next/link';
 
 export default function FeaturesGrid() {
     const { t } = useTranslation();
@@ -12,22 +14,25 @@ export default function FeaturesGrid() {
           icon: <Bot className="h-8 w-8 text-primary" />,
           title: t('features.actionableRecommendations'),
           description: t('features.actionableRecommendationsDesc'),
-          className: 'md:col-span-2',
+          href: '/recommendations',
         },
         {
           icon: <LayoutDashboard className="h-8 w-8 text-primary" />,
           title: t('features.unifiedDashboards'),
           description: t('features.unifiedDashboardsDesc'),
+          href: '/dashboard-info',
         },
         {
           icon: <Hospital className="h-8 w-8 text-primary" />,
           title: t('features.nearbyHospitals'),
           description: t('features.nearbyHospitalsDesc'),
+          href: '/hospitals',
         },
         {
           icon: <ShieldCheck className="h-8 w-8 text-primary" />,
           title: t('features.privacyCompliance'),
           description: t('features.privacyComplianceDesc'),
+          href: '#', // Or a dedicated privacy page
           className: 'md:col-span-3',
         },
       ];
@@ -42,17 +47,33 @@ export default function FeaturesGrid() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
-            <Card key={index} className={`bg-card/80 backdrop-blur-sm ${feature.className}`}>
-              <CardHeader className="flex flex-row items-center gap-4">
-                {feature.icon}
-                <CardTitle className="font-headline">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+          {features.map((feature, index) => {
+            const cardContent = (
+              <div className="flex flex-col h-full">
+                <div className="flex flex-row items-center gap-4 mb-4">
+                  {feature.icon}
+                  <h3 className="font-headline text-xl font-semibold">{feature.title}</h3>
+                </div>
+                <p className="text-muted-foreground flex-grow">{feature.description}</p>
+              </div>
+            );
+
+            if(feature.href === '#') {
+                return (
+                    <SpotlightCard key={index} className={`p-6 ${feature.className}`}>
+                        {cardContent}
+                    </SpotlightCard>
+                )
+            }
+            
+            return (
+              <Link key={index} href={feature.href} className={`no-underline ${feature.className}`}>
+                <SpotlightCard className="p-6 h-full">
+                  {cardContent}
+                </SpotlightCard>
+              </Link>
+            )
+          })}
         </div>
       </div>
     </section>
