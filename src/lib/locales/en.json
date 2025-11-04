@@ -135,39 +135,25 @@
         "kmAway": "km away",
         "getDirections": "Get Directions"
     },
-    "dashboard": {
-        "title": "Dashboard",
-        "welcome": "Welcome back!",
-        "welcomeDesc": "Here's a quick overview of your health dashboard. Ready to get started?",
-        "symptomTriage": "Symptom Triage",
-        "symptomTriageDesc": "Describe your symptoms to get an AI-powered triage assessment.",
-        "startTriage": "Start Triage",
-        "imageDiagnosis": "Image Diagnosis",
-        "imageDiagnosisDesc": "Upload an image of your condition for a quick analysis.",
-        "uploadImage": "Upload Image",
-        "appointments": "Appointments",
-        "appointmentsDesc": "You have 2 upcoming appointments.",
-        "viewAll": "View All",
-        "findHospitals": "Find Hospitals",
-        "findHospitalsDesc": "Find nearby hospitals and clinics in Tamil Nadu.",
-        "searchNow": "Search Now"
+    "recommendationsPage": {
+        "title": "Actionable Recommendations",
+        "subtitle": "Get personalized advice, from home care to booking a consultation.",
+        "cardTitle": "AI-Powered Guidance",
+        "content1": "After analyzing your symptoms or medical images, AarogyamAI provides clear, actionable recommendations tailored to your situation. Our goal is to empower you with the information you need to take the right next steps for your health.",
+        "content2": "Recommendations can range from simple home care advice for mild conditions to suggestions for over-the-counter medication. For more serious concerns, we will advise you to seek professional medical attention and can even help you find nearby hospitals.",
+        "content3": "Every piece of advice is generated based on a comprehensive analysis, but it is crucial to remember that AarogyamAI is an informational tool and not a substitute for a professional medical diagnosis. Always consult a qualified healthcare provider for medical advice."
     },
-    "dashboardLayout": {
-        "dashboard": "Dashboard",
-        "symptomTriage": "Symptom Triage",
-        "imageDiagnosis": "Image Diagnosis",
-        "xrayDiagnosis": "X-Ray Diagnosis",
-        "findHospitals": "Find Hospitals",
-        "logout": "Log Out"
-    },
-    "dashboardHeader": {
-        "toggleNotifications": "Toggle notifications",
-        "toggleUserMenu": "Toggle user menu",
-        "myAccount": "My Account",
-        "profile": "Profile",
-        "settings": "Settings",
-        "support": "Support",
-        "logout": "Log out"
+    "dashboardInfoPage": {
+        "title": "Unified Dashboards",
+        "subtitle": "Separate, role-based views for patients, doctors, and admins.",
+        "cardTitle": "A Central Hub for Health",
+        "mainContent": "The AarogyamAI platform is designed with different users in mind. Our unified dashboard system provides specific views and tools for patients, doctors, and healthcare administrators to ensure a seamless and efficient experience for everyone.",
+        "forPatientsTitle": "For Patients:",
+        "forPatientsContent": "Easily track your health history, view past analysis results, manage appointments, and access personalized educational content. Your patient dashboard is your personal health command center.",
+        "forDoctorsTitle": "For Doctors:",
+        "forDoctorsContent": "Access patient-submitted data (with consent), review AI-assisted analyses, manage consultation schedules, and communicate securely with patients. The doctor's dashboard is designed to streamline workflows and improve diagnostic efficiency.",
+        "forAdminsTitle": "For Admins:",
+        "forAdminsContent": "Oversee hospital or clinic operations, manage doctor and patient records, and view anonymized health data analytics to understand community health trends."
     },
     "languages": {
         "english": "English",
