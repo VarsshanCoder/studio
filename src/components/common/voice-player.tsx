@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -54,7 +55,7 @@ export function VoicePlayer({ text, className }: VoicePlayerProps) {
     }
 
     // Resume if paused
-    if (audioRef.current.src && audioRef.current.paused) {
+    if (audioRef.current.src && audioRef.current.paused && !isLoading) {
       audioRef.current.play();
       setIsPlaying(true);
       return;
@@ -65,7 +66,6 @@ export function VoicePlayer({ text, className }: VoicePlayerProps) {
     try {
       const textToSpeak = typeof text === 'function' ? text() : text;
       if (!textToSpeak || !textToSpeak.trim()) {
-        setIsLoading(false);
         return;
       }
 
@@ -74,10 +74,20 @@ export function VoicePlayer({ text, className }: VoicePlayerProps) {
         language: language,
       });
 
-      if (response.audioDataUri) {
+      if (response && response.audioDataUri) {
         audioRef.current.src = response.audioDataUri;
-        audioRef.current.play();
+        audioRef.current.play().catch(e => {
+          console.error("Audio play failed:", e);
+          toast({
+            variant: 'destructive',
+            title: 'Audio failed',
+            description: 'Could not play the generated audio.',
+          });
+          setIsPlaying(false);
+        });
         setIsPlaying(true);
+      } else {
+        throw new Error("No audio data received.");
       }
     } catch (error) {
       console.error('TTS failed:', error);
@@ -86,6 +96,7 @@ export function VoicePlayer({ text, className }: VoicePlayerProps) {
         title: 'Audio failed',
         description: 'Could not generate audio for this content.',
       });
+      setIsPlaying(false);
     } finally {
       setIsLoading(false);
     }
@@ -104,6 +115,7 @@ export function VoicePlayer({ text, className }: VoicePlayerProps) {
       onClick={handlePlay}
       className={className}
       aria-label="Listen to content"
+      disabled={isLoading}
     >
       {getButtonIcon()}
     </Button>
