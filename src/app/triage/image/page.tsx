@@ -15,9 +15,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslation } from "@/context/language-context";
 import { ScanLine, UploadCloud } from "lucide-react";
+import { VoiceInput } from "@/components/common/voice-input";
+import { useState } from "react";
 
 export default function ImageDiagnosisPage() {
   const { t } = useTranslation();
+  const [symptoms, setSymptoms] = useState('');
+
   return (
     <Card className="w-full max-w-2xl">
       <CardHeader>
@@ -54,7 +58,19 @@ export default function ImageDiagnosisPage() {
         </div>
          <div className="grid gap-2">
           <Label htmlFor="symptoms">{t('imageDiagnosisPage.symptomsLabel')}</Label>
-          <Textarea id="symptoms" placeholder={t('imageDiagnosisPage.symptomsPlaceholder')} />
+           <div className="relative">
+            <Textarea 
+              id="symptoms"
+              placeholder={t('imageDiagnosisPage.symptomsPlaceholder')}
+              value={symptoms}
+              onChange={(e) => setSymptoms(e.target.value)}
+              className="pr-12"
+            />
+            <VoiceInput
+              onTranscriptChange={(transcript) => setSymptoms(symptoms ? `${symptoms} ${transcript}`: transcript)}
+              className="absolute right-2 top-2"
+            />
+          </div>
         </div>
         <div className="flex items-start space-x-3">
           <Checkbox id="consent" />

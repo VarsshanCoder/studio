@@ -28,6 +28,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { VoicePlayer } from "@/components/common/voice-player";
+import { VoiceInput } from "@/components/common/voice-input";
 
 export default function SymptomTriagePage() {
   const { t, language, setLanguage } = useTranslation();
@@ -128,13 +129,19 @@ export default function SymptomTriagePage() {
         <CardContent className="grid gap-6">
           <div className="grid gap-2">
             <Label htmlFor="symptoms">{t('symptomTriagePage.symptomsLabel')}</Label>
-            <Textarea 
-                id="symptoms" 
-                placeholder={t('symptomTriagePage.symptomsPlaceholder')} 
-                className="min-h-[120px]"
-                value={symptoms}
-                onChange={(e) => setSymptoms(e.target.value)}
-            />
+            <div className="relative">
+              <Textarea 
+                  id="symptoms" 
+                  placeholder={t('symptomTriagePage.symptomsPlaceholder')} 
+                  className="min-h-[120px] pr-12"
+                  value={symptoms}
+                  onChange={(e) => setSymptoms(e.target.value)}
+              />
+              <VoiceInput 
+                onTranscriptChange={(transcript) => setSymptoms(symptoms ? `${symptoms} ${transcript}`: transcript)} 
+                className="absolute right-2 top-2"
+              />
+            </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="grid gap-2">

@@ -21,6 +21,7 @@ import { xrayDiagnosis, type XrayDiagnosisOutput } from "@/ai/flows/xray-diagnos
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { VoicePlayer } from "@/components/common/voice-player";
+import { VoiceInput } from "@/components/common/voice-input";
 
 export default function XrayDiagnosisPage() {
   const { t, language } = useTranslation();
@@ -150,7 +151,19 @@ export default function XrayDiagnosisPage() {
           </div>
           <div className="grid gap-2">
             <Label htmlFor="symptoms">{t('xrayDiagnosisPage.symptomsLabel')}</Label>
-            <Textarea id="symptoms" placeholder={t('xrayDiagnosisPage.symptomsPlaceholder')} value={symptoms} onChange={e => setSymptoms(e.target.value)} />
+            <div className="relative">
+              <Textarea 
+                id="symptoms"
+                placeholder={t('xrayDiagnosisPage.symptomsPlaceholder')}
+                value={symptoms} 
+                onChange={e => setSymptoms(e.target.value)}
+                className="pr-12"
+              />
+               <VoiceInput
+                onTranscriptChange={(transcript) => setSymptoms(symptoms ? `${symptoms} ${transcript}`: transcript)}
+                className="absolute right-2 top-2"
+              />
+            </div>
           </div>
           <div className="flex items-start space-x-3">
             <Checkbox id="consent" checked={consent} onCheckedChange={(checked) => setConsent(!!checked)} />
