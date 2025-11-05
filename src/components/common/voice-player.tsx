@@ -64,7 +64,10 @@ export function VoicePlayer({ text, className }: VoicePlayerProps) {
     setIsLoading(true);
     try {
       const textToSpeak = typeof text === 'function' ? text() : text;
-      if (!textToSpeak.trim()) return;
+      if (!textToSpeak || !textToSpeak.trim()) {
+        setIsLoading(false);
+        return;
+      }
 
       const response = await textToSpeech({
         text: textToSpeak,
