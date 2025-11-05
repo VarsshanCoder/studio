@@ -5,7 +5,6 @@
         "imageDiagnosis": "Image Diagnosis",
         "xrayDiagnosis": "X-Ray Diagnosis",
         "hospitals": "Hospitals",
-        "dashboard": "Dashboard",
         "login": "Login",
         "toggleLanguage": "Toggle language"
     },
@@ -98,11 +97,31 @@
         "agePlaceholder": "e.g. 35",
         "sexLabel": "Sex",
         "sexPlaceholder": "e.g. Male",
+        "regionLabel": "Region/City",
+        "regionPlaceholder": "e.g. Chennai",
         "symptomsLabel": "Additional Symptoms (optional)",
         "symptomsPlaceholder": "Describe any other symptoms you're experiencing...",
         "consentLabel": "I consent to upload my images and share health details for AI analysis.",
         "consentDescription": "I understand this is not a substitute for a professional medical diagnosis.",
-        "analyzeButton": "Analyze Image"
+        "analyzeButton": "Analyze Image",
+        "analyzingButton": "Analyzing...",
+        "validationErrorTitle": "Missing Information",
+        "validationErrorDesc": "Please fill out all required fields and provide consent.",
+        "analysisErrorTitle": "Analysis Failed",
+        "analysisErrorDesc": "Could not analyze the image. Please try again.",
+        "analysisResultTitle": "AI Image Analysis",
+        "analysisResultDesc": "This analysis is AI-generated and should be reviewed by a qualified medical professional.",
+        "confidenceLabel": "Confidence Score",
+        "severityLabel": "Assessed Severity",
+        "severity": {
+            "mild": "Mild",
+            "moderate": "Moderate",
+            "severe": "Severe"
+        },
+        "diagnosisLabel": "Probable Diagnoses",
+        "recommendationsLabel": "Recommendations",
+        "followUpLabel": "Follow-up Plan",
+        "explanationLabel": "Detailed Explanation"
     },
     "xrayDiagnosisPage": {
         "title": "X-Ray Diagnosis",
