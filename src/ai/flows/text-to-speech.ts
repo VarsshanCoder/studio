@@ -68,6 +68,9 @@ const textToSpeechFlow = ai.defineFlow(
         responseModalities: ['AUDIO'],
         speechConfig: {
           voiceConfig: {
+            // NOTE: Not all voices may be available for all languages.
+            // You can find a list of available voices here:
+            // https://cloud.google.com/vertex-ai/docs/generative-ai/model-reference/text-to-speech
             prebuiltVoiceConfig: {
               voiceName: language === 'ta' ? 'ta-IN-Standard-A' : 'en-US-Standard-C',
             },

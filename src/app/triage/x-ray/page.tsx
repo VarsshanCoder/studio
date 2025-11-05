@@ -1,4 +1,4 @@
-// @ts-nocheck
+{// @ts-nocheck
 'use client';
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -15,10 +15,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useTranslation } from "@/context/language-context";
-import { UploadCloud, FileHeart, Loader2, BrainCircuit, AlertTriangle } from "lucide-react";
+import { UploadCloud, FileHeart, Loader2, BrainCircuit } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { xrayDiagnosis, type XrayDiagnosisOutput } from "@/ai/flows/xray-diagnosis";
-import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { VoicePlayer } from "@/components/common/voice-player";
 import { VoiceInput } from "@/components/common/voice-input";

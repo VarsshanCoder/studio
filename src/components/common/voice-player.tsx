@@ -1,9 +1,9 @@
-// @ts-nocheck
+{// @ts-nocheck
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Volume2, Loader2, Play, Pause } from 'lucide-react';
+import { Volume2, Loader2, Pause } from 'lucide-react';
 import { textToSpeech } from '@/ai/flows/text-to-speech';
 import { useTranslation } from '@/context/language-context';
 import { useToast } from '@/hooks/use-toast';
@@ -20,27 +20,52 @@ export function VoicePlayer({ text, className }: VoicePlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  useEffect(() => {
+    // Create audio element on mount
+    audioRef.current = new Audio();
+    audioRef.current.onended = () => setIsPlaying(false);
+
+    // Cleanup on unmount
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  // When language changes, stop and clear the audio
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = '';
+      setIsPlaying(false);
+    }
+  }, [language]);
+
+
   const handlePlay = async () => {
-    if (isPlaying && audioRef.current) {
+    if (!audioRef.current) return;
+    
+    // Pause if playing
+    if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
       return;
     }
 
-    if (audioRef.current && !audioRef.current.paused) {
-      audioRef.current.pause();
-    }
-    
-    if (audioRef.current && audioRef.current.src) {
-        audioRef.current.play();
-        setIsPlaying(true);
-        return;
+    // Resume if paused
+    if (audioRef.current.src && audioRef.current.paused) {
+      audioRef.current.play();
+      setIsPlaying(true);
+      return;
     }
 
+    // Fetch and play new audio
     setIsLoading(true);
     try {
       const textToSpeak = typeof text === 'function' ? text() : text;
-      if (!textToSpeak) return;
+      if (!textToSpeak.trim()) return;
 
       const response = await textToSpeech({
         text: textToSpeak,
@@ -48,10 +73,6 @@ export function VoicePlayer({ text, className }: VoicePlayerProps) {
       });
 
       if (response.audioDataUri) {
-        if (!audioRef.current) {
-          audioRef.current = new Audio();
-          audioRef.current.onended = () => setIsPlaying(false);
-        }
         audioRef.current.src = response.audioDataUri;
         audioRef.current.play();
         setIsPlaying(true);

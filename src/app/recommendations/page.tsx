@@ -1,4 +1,4 @@
-// @ts-nocheck
+{// @ts-nocheck
 'use client';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
