@@ -107,7 +107,7 @@ export default function SymptomTriagePage() {
     if (!result) return '';
     return `
       ${t('symptomTriagePage.analysisResultTitle')}.
-      ${t('symptomTriagePage.severityLabel')}: ${result.severity}.
+      ${t('symptomTriagePage.severityLabel')}: ${t(`symptomTriagePage.severity.${result.severity}`)}.
       ${t('symptomTriagePage.confidenceLabel')}: ${Math.round(result.confidence * 100)}%.
       ${t('symptomTriagePage.explanationLabel')}: ${result.explanation}.
       ${t('symptomTriagePage.recommendationsLabel')}: ${result.recommendations.join(', ')}.
@@ -204,7 +204,7 @@ export default function SymptomTriagePage() {
                     {t('symptomTriagePage.severityLabel')}
                   </h3>
                   <Badge variant={getSeverityVariant(result.severity)} className="text-base">
-                      {result.severity.charAt(0).toUpperCase() + result.severity.slice(1)}
+                      {t(`symptomTriagePage.severity.${result.severity}`)}
                   </Badge>
               </div>
                <div className="space-y-2">

@@ -1,3 +1,4 @@
+
 {
     "header": {
         "symptomTriage": "Symptom Triage",
@@ -78,6 +79,11 @@
         "analysisResultTitle": "AI Analysis Result",
         "analysisResultDesc": "Based on the symptoms you provided, here is our assessment.",
         "severityLabel": "Assessed Severity",
+        "severity": {
+            "mild": "Mild",
+            "moderate": "Moderate",
+            "severe": "Severe"
+        },
         "explanationLabel": "Explanation",
         "recommendationsLabel": "Recommendations",
         "confidenceLabel": "Confidence Score"

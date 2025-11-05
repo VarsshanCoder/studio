@@ -1,3 +1,4 @@
+
 {
     "header": {
         "symptomTriage": "அறிகுறி ட்ரையேஜ்",
@@ -78,6 +79,11 @@
         "analysisResultTitle": "AI பகுப்பாய்வு முடிவு",
         "analysisResultDesc": "நீங்கள் வழங்கிய அறிகுறிகளின் அடிப்படையில், இதோ எங்கள் மதிப்பீடு.",
         "severityLabel": "மதிப்பிடப்பட்ட தீவிரம்",
+        "severity": {
+            "mild": "லேசான",
+            "moderate": "மிதமான",
+            "severe": "கடுமையான"
+        },
         "explanationLabel": "விளக்கம்",
         "recommendationsLabel": "பரிந்துரைகள்",
         "confidenceLabel": "நம்பிக்கை மதிப்பெண்"
