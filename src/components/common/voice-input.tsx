@@ -65,11 +65,19 @@ export function VoiceInput({ onTranscriptChange, className }: VoiceInputProps) {
     };
 
     recognition.onerror = (event) => {
-      toast({
-        variant: 'destructive',
-        title: 'Voice recognition error',
-        description: `Error occurred in recognition: ${event.error}`,
-      });
+      if (event.error === 'not-allowed') {
+        toast({
+          variant: 'destructive',
+          title: 'Microphone Access Denied',
+          description: "Please enable microphone permissions in your browser's site settings to use voice input.",
+        });
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Voice recognition error',
+          description: `An error occurred: ${event.error}. Please try again.`,
+        });
+      }
       setIsRecording(false);
     };
     
