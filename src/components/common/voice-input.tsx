@@ -71,7 +71,7 @@ export function VoiceInput({ onTranscriptChange, className }: VoiceInputProps) {
           title: 'Microphone Access Denied',
           description: "Please enable microphone permissions in your browser's site settings to use voice input.",
         });
-      } else {
+      } else if (event.error !== 'no-speech') {
         toast({
           variant: 'destructive',
           title: 'Voice recognition error',
